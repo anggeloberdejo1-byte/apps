@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Herramientas para músicos — Anggelo Berdejo</title>
+<meta name="description" content="Afinador Pro, Plan de Estudio y Metrónomo multipercusión. Apps gratuitas para músicos, hechas por Anggelo Berdejo.">
+<meta property="og:title" content="Herramientas para músicos — Anggelo Berdejo">
+<meta property="og:description" content="Afinador Pro, Plan de Estudio y Metrónomo multipercusión. Gratis, funcionan en el navegador.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema:#F6F0E4;
+    --crema-hondo:#EDE4D2;
+    --tinta:#2B352C;
+    --bosque:#415342;
+    --salvia:#5A7F66;
+    --tostado:#C0AE8E;
+  }
+
+  *{box-sizing:border-box}
+
+  html{-webkit-text-size-adjust:100%}
+
+  body{
+    margin:0;
+    background:var(--crema);
+    color:var(--tinta);
+    font-family:"Newsreader",Georgia,serif;
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .hoja{
+    max-width:36rem;
+    margin:0 auto;
+    padding:2.75rem 1.5rem 3.5rem;
+  }
+
+  /* ---- Encabezado: mismo sistema de rótulo que sus reels ---- */
+
+  .rotulo{
+    text-align:center;
+    margin-bottom:2.75rem;
+  }
+
+  .rotulo h1{
+    font-family:"Anton",Impact,sans-serif;
+    font-weight:400;
+    font-size:clamp(2.85rem,15vw,4.75rem);
+    line-height:.9;
+    letter-spacing:.005em;
+    margin:0;
+    color:var(--bosque);
+    text-transform:uppercase;
+  }
+
+  .rotulo .matiz{
+    display:block;
+    margin-top:.5rem;
+    font-size:clamp(1rem,4.4vw,1.3rem);
+    font-style:italic;
+    color:var(--salvia);
+    letter-spacing:.01em;
+  }
+
+  .firma{
+    margin:1.4rem 0 0;
+    font-size:.95rem;
+    color:var(--salvia);
+  }
+
+  /* ---- Selector de idioma ---- */
+
+  .idioma{
+    display:flex;
+    justify-content:center;
+    gap:.4rem;
+    margin-top:1.5rem;
+  }
+
+  .idioma button{
+    font-family:inherit;
+    font-size:.85rem;
+    letter-spacing:.06em;
+    padding:.3rem .75rem;
+    border:1px solid var(--tostado);
+    border-radius:2px;
+    background:transparent;
+    color:var(--salvia);
+    cursor:pointer;
+  }
+
+  .idioma button[aria-pressed="true"]{
+    background:var(--bosque);
+    border-color:var(--bosque);
+    color:var(--crema);
+  }
+
+  .idioma button:focus-visible,
+  .app:focus-visible,
+  .aporte a:focus-visible{
+    outline:2px solid var(--salvia);
+    outline-offset:3px;
+  }
+
+  /* ---- Las apps ---- */
+
+  .apps{
+    border-top:1px solid var(--tostado);
+  }
+
+  .app{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    padding:1.5rem .25rem 1.6rem;
+    border-bottom:1px solid var(--tostado);
+  }
+
+  .app .nombre{
+    font-family:"Anton",Impact,sans-serif;
+    font-weight:400;
+    font-size:1.5rem;
+    letter-spacing:.01em;
+    text-transform:uppercase;
+    color:var(--bosque);
+    margin:0 0 .35rem;
+    line-height:1.1;
+  }
+
+  .app p{
+    margin:0;
+    color:var(--tinta);
+    max-width:34ch;
+  }
+
+  /* Tira rítmica: celdas llenas = pulsos, tomada de la grilla del metrónomo */
+  .tira{
+    display:flex;
+    gap:3px;
+    margin-bottom:.85rem;
+  }
+
+  .tira i{
+    width:11px;
+    height:11px;
+    border:1px solid var(--tostado);
+    border-radius:1px;
+  }
+
+  .tira i.on{
+    background:var(--salvia);
+    border-color:var(--salvia);
+  }
+
+  .app:hover .nombre,
+  .app:focus-visible .nombre{ color:var(--salvia) }
+
+  .app:hover .tira i.on{ background:var(--bosque);border-color:var(--bosque) }
+
+  /* ---- Nota y aporte ---- */
+
+  .nota{
+    margin:2.25rem 0 0;
+    color:var(--salvia);
+    font-size:1rem;
+  }
+
+  .aporte{
+    margin-top:1.5rem;
+    padding:1.5rem;
+    background:var(--crema-hondo);
+    border-radius:3px;
+  }
+
+  .aporte p{
+    margin:0 0 1rem;
+    font-size:1rem;
+  }
+
+  .aporte a{
+    display:inline-block;
+    font-family:"Anton",Impact,sans-serif;
+    font-size:1rem;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:.7rem 1.4rem;
+    background:var(--bosque);
+    color:var(--crema);
+    border-radius:2px;
+  }
+
+  .aporte a:hover{ background:var(--salvia) }
+
+  .pie{
+    margin-top:3rem;
+    text-align:center;
+    font-size:.9rem;
+    color:var(--tostado);
+  }
+
+  .pie a{ color:var(--salvia) }
+
+  @media (prefers-reduced-motion:no-preference){
+    .app .nombre,.app .tira i,.aporte a,.idioma button{transition:color .15s,background-color .15s,border-color .15s}
+  }
+</style>
+</head>
+<body>
+
+<main class="hoja">
+
+  <header class="rotulo">
+    <h1 data-es="Herramientas" data-en="Tools">Herramientas</h1>
+    <span class="matiz" data-es="(para músicos)" data-en="(for musicians)">(para músicos)</span>
+    <p class="firma" data-es="Hechas por Anggelo Berdejo — El Ñañe" data-en="Built by Anggelo Berdejo — El Ñañe">Hechas por Anggelo Berdejo — El Ñañe</p>
+
+    <div class="idioma">
+      <button type="button" data-idioma="es" aria-pressed="true">Español</button>
+      <button type="button" data-idioma="en" aria-pressed="false">English</button>
+    </div>
+  </header>
+
+  <nav class="apps">
+
+    <a class="app" href="https://anggeloberdejo1-byte.github.io/Afinador-pro/">
+      <span class="tira" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></span>
+      <h2 class="nombre">Afinador Pro</h2>
+      <p data-es="Afina parches y armónicos con precisión. Pensado para percusión, no adaptado de una guitarra."
+         data-en="Tune heads and harmonics precisely. Made for percussion, not adapted from a guitar tuner.">Afina parches y armónicos con precisión. Pensado para percusión, no adaptado de una guitarra.</p>
+    </a>
+
+    <a class="app" href="https://anggeloberdejo1-byte.github.io/Plan-de-estudio/">
+      <span class="tira" aria-hidden="true"><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i></span>
+      <h2 class="nombre">Plan de Estudio</h2>
+      <p data-es="Rutinas progresivas para desarrollar independencia de manos y pies. Eliges un patrón, lo trabajas lento, y de ahí subes."
+         data-en="Progressive routines for hand and foot independence. Pick a pattern, work it slowly, build up from there.">Rutinas progresivas para desarrollar independencia de manos y pies. Eliges un patrón, lo trabajas lento, y de ahí subes.</p>
+    </a>
+
+    <a class="app" href="https://anggeloberdejo1-byte.github.io/Metronomo-multipercu/">
+      <span class="tira" aria-hidden="true"><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i></span>
+      <h2 class="nombre">Metrónomo multipercusión</h2>
+      <p data-es="Grilla de varios instrumentos a la vez. Conectado al Plan de Estudio: mandas un patrón y aterriza directo en la grilla."
+         data-en="A grid for several instruments at once. Connected to the Study Plan — send a pattern and it lands straight in the grid.">Grilla de varios instrumentos a la vez. Conectado al Plan de Estudio: mandas un patrón y aterriza directo en la grilla.</p>
+    </a>
+
+  </nav>
+
+  <p class="nota"
+     data-es="Las tres funcionan en el navegador, sin instalar nada. Si las agregas a tu pantalla de inicio, quedan disponibles sin internet."
+     data-en="All three run in your browser, no install needed. Add them to your home screen and they work offline.">Las tres funcionan en el navegador, sin instalar nada. Si las agregas a tu pantalla de inicio, quedan disponibles sin internet.</p>
+
+  <section class="aporte">
+    <p data-es="Son de uso libre. Las hago en mi tiempo como aporte a colegas músicos. Si te sirven y quieres apoyar el proyecto, cualquier aporte ayuda a seguir desarrollándolas."
+       data-en="They're free to use. I build them on my own time as a contribution to fellow musicians. If they help you and you'd like to support the project, any contribution keeps them growing.">Son de uso libre. Las hago en mi tiempo como aporte a colegas músicos. Si te sirven y quieres apoyar el proyecto, cualquier aporte ayuda a seguir desarrollándolas.</p>
+    <a href="https://www.paypal.com/ncp/payment/WYKNW4VNP5N2G"
+       data-es="Aportar" data-en="Contribute">Aportar</a>
+  </section>
+
+  <p class="pie">
+    <a href="https://instagram.com/anggelo.berdejo">@anggelo.berdejo</a>
+  </p>
+
+</main>
+
+<script>
+  (function(){
+    var botones = document.querySelectorAll('.idioma button');
+    var textos  = document.querySelectorAll('[data-es]');
+
+    function cambiar(idioma){
+      textos.forEach(function(el){
+        var t = el.getAttribute('data-' + idioma);
+        if (t) el.textContent = t;
+      });
+      document.documentElement.lang = idioma;
+      botones.forEach(function(b){
+        b.setAttribute('aria-pressed', b.dataset.idioma === idioma ? 'true' : 'false');
+      });
+      try { localStorage.setItem('idioma', idioma); } catch(e){}
+    }
+
+    botones.forEach(function(b){
+      b.addEventListener('click', function(){ cambiar(b.dataset.idioma); });
+    });
+
+    var guardado;
+    try { guardado = localStorage.getItem('idioma'); } catch(e){}
+    if (!guardado && navigator.language && navigator.language.slice(0,2) !== 'es') guardado = 'en';
+    if (guardado === 'en') cambiar('en');
+  })();
+</script>
+
+</body>
+</html>
